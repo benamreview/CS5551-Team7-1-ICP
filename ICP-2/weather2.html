@@ -1,0 +1,89 @@
+<html>
+<head>
+    <style>
+        .weatherModule {
+            background: #f2f2f2;
+            height: 680px;
+            width: 330px;
+            border: 3px dashed #ccc;
+            padding: 1em;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+</head>
+<body>
+
+<div ng-app="weather" ng-controller="weatherctrl">
+    <!-- TWO FIELDS TO FILL OUT AND GET INFORMATION FROM THE API, INCLUDING STATE CODE (2 LETTERS)
+    AND CITY -->
+    Enter State Code (2 letters): <input type="text"  ng-model="State" id="State"/>
+    Enter City Name: <input type="text"  ng-model="City" id="City" />
+    <!-- FUNCTION getWeather will now accept 2 parameters from the answers in the above fields. -->
+    <button id="btn" ng-click="getWeather(State, City)"> Show Weather </button>
+    <br/>
+    <br/>
+    <div class="weatherModule">
+        <!--{{currentweather[4]}}<br>-->
+        <!--INSTEAD OF SHOWING THE VARIABLE CURRENT WEATHER, I CREATED A WEATHER ARRAY
+        VARIABLE TO BE USED IN THE <SCRIPT> PART OF THE WEB. -->
+        <p id = "WeatherArray"></p>
+        <!--img src={{currentIcon[4]}}-->
+
+    </div>
+</div>
+
+<script>
+    angular.module('weather',[])
+        .controller('weatherctrl', function($scope, $http) {
+            console.log("hi");
+            $scope.getWeather = function(stt,city) {
+                //Since the api is not rigid as in retrieving only the information in Kansas City, MO
+                //It should be formatted as if it is dynamic and dependent upon the filled-in content from the user
+                //In this case, it is the state and city that is waiting on the user's input.
+                apiurl = 'http://api.wunderground.com/api/4bbbc25f4f5946dd/hourly/q/' + stt + '/' + city + '.json';
+                console.log(apiurl);
+                $http.get(apiurl).success(function(data) {
+                    console.log(data);
+                    //Variable declaration, including arrays because we need 5 hours therefore more than 1 slot for each.
+                    //time represents the predicted hour,minute,second and date as well.
+                    time =[];
+                    temp=[];
+                    icon=[];
+                    weather=[];
+                    $scope.currentweather=[];
+                    $scope.currentIcon=[];
+                    text = "";
+                    text += "<br>WEATHER REPORT FOR " + city.toUpperCase() + ", " + stt.toUpperCase() + "</br>";
+                    //Main logic of the script:
+                    // After retrieving the weather info from the API, the data will be stored into variable data
+                    // which is an extensive array and will be used to extract/split even further to 5 hours ahead of the
+                    // current time. Therefore, we need a loop going from 0 to 4 (0 is first index) to
+                    // get 5 hours ahead, store them into arrays of time, temp, icon, weather to further append them onto the report
+                    // and display the according icons.
+                    for (i=0;i<=4;i++){
+                        temp[i] = data.hourly_forecast[i].temp.english;
+                        icon[i] = data.hourly_forecast[i].icon_url;
+                        weather[i] = data.hourly_forecast[i].condition;
+                        time[i] = data.hourly_forecast[i].FCTTIME.pretty;
+                        $scope.currentweather[i] = "Current temperature in Kansas City is " + temp[i] + " F and " + weather[i];
+                        $scope.currentIcon[i] = icon[i];
+                        text += "<br>" + "The predicted temperature in " + city + ", " + stt + " at " + time[i] + " is  " + temp[i] + " F and " + weather[i] + "</br>";
+                        //Since icon[] is also an array, it is used to save URLs to the icon of the weather
+                        // of the corresponding event and time
+                        // E.g: cloudy, clear, sunny, stormy, rainy, ....
+                        text +='<div style="text-align: center;"><img src="' + icon[i] +'"></div>';
+                        console.log(text);
+                    }
+                    text += "";
+                    document.getElementById("WeatherArray").innerHTML = text; //return the values back to the array in the body part
+                    console.log(temp);
+
+
+                })
+            }
+
+        });
+</script>
+</body>
+</html>
