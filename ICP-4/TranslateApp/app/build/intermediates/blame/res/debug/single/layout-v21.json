@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\hoang\\Desktop\\TranslateApp\\TranslateApp\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\hoang\\.android\\build-cache\\e224f23247571d541a8b410fc97bc7b48127248f\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoang\\Desktop\\TranslateApp\\TranslateApp\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\hoang\\.android\\build-cache\\e224f23247571d541a8b410fc97bc7b48127248f\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoang\\Desktop\\TranslateApp\\TranslateApp\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\hoang\\.android\\build-cache\\e224f23247571d541a8b410fc97bc7b48127248f\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoang\\Desktop\\TranslateApp\\TranslateApp\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\hoang\\.android\\build-cache\\e224f23247571d541a8b410fc97bc7b48127248f\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    }
+]

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="tutorial.cs5551.com.translateapp.TranslateActivity"
+    tools:showIn="@layout/activity_translate">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.sample.foo.simplewebapi.MainActivity"
+        android:id="@+id/home_container"
+        android:weightSum="1">
+
+
+        <Spinner
+            android:id="@+id/languagesIn_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/txt_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/languagesIn_spinner"
+            android:layout_weight="0.04"
+            android:hint="Enter the line to translate..."
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:id="@+id/txt_Result"
+            android:layout_width="fill_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/languagesOut_spinner"
+            android:textColor="#3b40c6"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_Search"
+            style="@style/Base.Widget.AppCompat.Button"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:onClick="translateText"
+            android:text="Translate!"
+            android:textColor="#ba6349" />
+
+        <Spinner
+            android:id="@+id/languagesOut_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txt_Email"
+            android:layout_marginTop="26dp" />
+
+        <Button
+            android:id="@+id/logout_btn"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/holo_green_light"
+            android:onClick="LogOut"
+            android:text="Log Out" />
+
+    </RelativeLayout>
+</RelativeLayout>
