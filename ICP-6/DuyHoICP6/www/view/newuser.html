@@ -1,0 +1,41 @@
+<div class="modal">
+
+  <!-- Modal header bar -->
+  <ion-header-bar class="bar-secondary">
+    <h1 class="title">New User Registration</h1>
+    <button class="button button-energized" ng-click="closenewUser()">Cancel</button>
+  </ion-header-bar>
+
+  <!-- Modal content area -->
+  <ion-content>
+    <form ng-submit="createUser(user)">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class = "input-label">Username</span>
+          <input type="text" placeholder="Please enter your Username..." ng-model="user.username">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class = "input-label">First Name</span>
+          <input type="text" placeholder="Please enter your First Name:..." ng-model="fname">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class = "input-label">Last Name</span>
+          <input type="text" placeholder="Please enter your Last Name:..." ng-model="lname">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class = "input-label">Password Name</span>
+          <input type="password" placeholder="Please enter your Password:..." ng-model="password">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class = "input-label">Confirm Password</span>
+          <input type="password" placeholder="Please confirm your password:..." ng-model="password2">
+        </label>
+      </div>
+      <div class="padding">
+        <button type="submit" class="button button-block button-positive">Register New User</button>
+      </div>
+    </form>
+    
+  </ion-content>
+</div>
+<script src="index.html" type="text/ng-template" />
