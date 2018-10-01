@@ -32,15 +32,23 @@
       <h1 class="title">User Login</h1>
     </ion-header-bar>
     <--<ion-content>
+    <!--This list is dynamic as the listTitle will be updated in the app.js folder
+     whenever the user has registered for a new username/account
+     listTitle will change its color to notify the user that a new user has been recorded/added to the list-->
     <h2 align="center" id = "lTitle">{{listTitle}} </h2>
     <ion-list>
+      <!-- iterate through the list
+       ** This list is predefined with 3 users: user1, user2, and user3 in app.js **-->
       <ion-item ng-repeat="user in users">
         {{user.username}}
       </ion-item>
       <div id="myDIV" style = "display: none; font-weight:bold; font-size: 130%">
-        A New User has been added!
+        A new user has been added!
       </div>
     </ion-list>
+    <!-- This is the login area for users
+    To strictly focus on the requirements of the ICP, login function DOES NOT work now, but register does by taking the
+    user to a modal page where the user will be able to enter his credentials and register a new account-->
     <h2 align = "center">ICP 6 Login Page</h2>
     <label class="item item-input item-stacked-label">
       <span class = "input-label">Username</span>

@@ -8,27 +8,35 @@
 
   <!-- Modal content area -->
   <ion-content>
+    <!--This form contains all the required fields for ICP 6's register page and a button to click to register a new user
+     createUser(user) is defined in app.js
+     parameter is a single item that binds with ng-model-->
     <form ng-submit="createUser(user)">
       <div class="list">
+        <!--
+        These are the required fields for the new user registration page:
+        Username, First name, Last name, Password, Confirm Password.
+        Only the username will be attached to the users list and shown once the "create new user" button is clicked.
+        The rest of the data will act as dummy data and will be discarded-->
         <label class="item item-input item-stacked-label">
           <span class = "input-label">Username</span>
           <input type="text" placeholder="Please enter your Username..." ng-model="user.username">
         </label>
         <label class="item item-input item-stacked-label">
           <span class = "input-label">First Name</span>
-          <input type="text" placeholder="Please enter your First Name:..." ng-model="fname">
+          <input type="text" placeholder="Please enter your First Name:..." ng-model="user.fname">
         </label>
         <label class="item item-input item-stacked-label">
           <span class = "input-label">Last Name</span>
-          <input type="text" placeholder="Please enter your Last Name:..." ng-model="lname">
+          <input type="text" placeholder="Please enter your Last Name:..." ng-model="user.lname">
         </label>
         <label class="item item-input item-stacked-label">
           <span class = "input-label">Password Name</span>
-          <input type="password" placeholder="Please enter your Password:..." ng-model="password">
+          <input type="password" placeholder="Please enter your Password:..." ng-model="user.password">
         </label>
         <label class="item item-input item-stacked-label">
           <span class = "input-label">Confirm Password</span>
-          <input type="password" placeholder="Please confirm your password:..." ng-model="password2">
+          <input type="password" placeholder="Please confirm your password:..." ng-model="user.password2">
         </label>
       </div>
       <div class="padding">
