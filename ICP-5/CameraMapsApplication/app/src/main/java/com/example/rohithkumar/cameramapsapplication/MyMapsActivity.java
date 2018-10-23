@@ -22,7 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 
-public class MyMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class  MyMapsActivity extends FragmentActivity implements OnMapReadyCallback {
     /*NOTE:
      * For best practice, whenever there is a major change to the code or Android Studio restarts,
       * Please uninstall this app and re-install it to let the App ask for the location permission one more time
