@@ -55,11 +55,18 @@ http.createServer(function (req, res) {
             console.log(files.filetoupload[0].path);
             var filestoupload = files.filetoupload;
             var filenumLeft = filestoupload.length;
+            //Create a path if not exists
+            var dir = 'C:/Users/hoang/Documents/GitHub/CS5551-Team7-1-ICP/ICP-10/Source Code/tmp/';
+
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
+            ///Copy files over
             for (var i = 0; i < filestoupload.length; i++)
             {
                 console.log(filestoupload[i].name);
                 var oldpath = filestoupload[i].path;
-                var newpath = 'C:/Users/hoang/Documents/GitHub/CS5551-Team7-1-ICP/ICP-10/Source Code/' + filestoupload[i].name;
+                var newpath = 'C:/Users/hoang/Documents/GitHub/CS5551-Team7-1-ICP/ICP-10/Source Code/tmp/' + filestoupload[i].name;
                 fs.rename(oldpath, newpath, function (err) {
                     if (err) throw err;
                     if(--filenumLeft == 0){
@@ -75,18 +82,6 @@ http.createServer(function (req, res) {
 
     }
     else if (req.url == '/addnum'){
-        /*res.writeHead(200, {'Content-Type': 'text/html'});
-        var exec = require('child_process').exec, child;
-        child = exec('java -jar AdditionProgram.jar "1" "2"',
-            function (error, stdout, stderr){
-                console.log('stdout: ' + stdout);
-                console.log('stderr: ' + stderr);
-                if(error !== null){
-                    console.log('exec error: ' + error);
-                }
-            });
-        console.log("done child");
-        return res.end("Hello!");*/
         //////////////////////////////////////////////
         res.writeHead(200, {'Content-Type': 'application/json'});
         //These are the necessary variables for server to call the Google Distance Matrix API
@@ -118,12 +113,9 @@ http.createServer(function (req, res) {
                 //These are user's input which will be substituted into the API request
                 var num1 = resultBody.num1;
                 var num2 = resultBody.num2;
-                var result = "7000";
-                //console.log("ORIGIN AND DESTINATION" + origin + destination);
-                /*
-                 * Results of Google Distance Matrix API will be stored in this result.location array
-                  * which will further contain the distance and duration variables*/
-                var exec = require('child_process').exec, child;
+                var result = "";
+                /////Execute child process for Addition Program
+                /*var exec = require('child_process').exec, child;
                 child = exec('java -jar AdditionProgram.jar ' + num1  + ' ' + num2,
                     function (error, stdout, stderr){
                         console.log('stdout: ' + stdout);
@@ -134,8 +126,21 @@ http.createServer(function (req, res) {
                         if(error !== null){
                             console.log('exec error: ' + error);
                         }
-                    });
+                    });*/
+                var localtmpURL = 'C:\\Users\\hoang\\Documents\\GitHub\\CS5551-Team7-1-ICP\\ICP-10\\Source-Code\\tmp\\';
 
+                var exec = require('child_process').exec, child;
+                child = exec('java -jar JavaCallGraphVJ.jar ' + 'junit 5 ' + localtmpURL+'junit-4.3.jar ' + localtmpURL+'junit-4.5.jar ' + localtmpURL+'junit-4.7.jar ' + localtmpURL+'junit-4.9.jar',
+                    function (error, stdout, stderr){
+                        console.log('stdout: ' + stdout);
+                        result = stdout;
+                        res.write(result);
+                        res.end();
+                        console.log('stderr: ' + stderr);
+                        if(error !== null){
+                            console.log('exec error: ' + error);
+                        }
+                    });
                     //Convert the array into a JSON object that will be passed to res.write()
                     //and ultimately the JQuery method in index2.html
 
