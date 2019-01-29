@@ -141,7 +141,8 @@ http.createServer( function (req, res) {
                        // HTTP Status: 404 : NOT FOUND
                        // Content Type: text/plain
                        res.writeHead(404, {'Content-Type': 'text/html'});
-                   }else {
+                   }
+                   else {
                        //Page found
                        // HTTP Status: 200 : OK
                        // Content Type: text/plain

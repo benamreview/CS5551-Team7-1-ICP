@@ -1,10 +1,18 @@
 [
     {
+        "merged": "C:\\Users\\hoang\\Documents\\GitHub\\CS5551-Team7-1-ICP\\ICP-4\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\hoang\\.android\\build-cache\\93e2df101d478a047ef127a3d5075ea3c1c19aa0\\output\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
+    },
+    {
         "merged": "C:\\Users\\hoang\\Desktop\\TranslateApp\\TranslateApp\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_out.xml",
         "source": "C:\\Users\\hoang\\.android\\build-cache\\93e2df101d478a047ef127a3d5075ea3c1c19aa0\\output\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
     },
     {
         "merged": "C:\\Users\\hoang\\Desktop\\TranslateApp\\TranslateApp\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\hoang\\.android\\build-cache\\93e2df101d478a047ef127a3d5075ea3c1c19aa0\\output\\res\\anim-v21\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoang\\Documents\\GitHub\\CS5551-Team7-1-ICP\\ICP-4\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_in.xml",
         "source": "C:\\Users\\hoang\\.android\\build-cache\\93e2df101d478a047ef127a3d5075ea3c1c19aa0\\output\\res\\anim-v21\\design_bottom_sheet_slide_in.xml"
     }
 ]

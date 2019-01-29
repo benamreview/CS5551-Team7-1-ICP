@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\hoang\\Documents\\GitHub\\CS5551-Team7-1-ICP\\ICP-4\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_login.xml",
+        "source": "C:\\Users\\hoang\\Documents\\GitHub\\CS5551-Team7-1-ICP\\ICP-4\\TranslateApp\\app\\src\\main\\res\\menu\\menu_login.xml"
+    },
+    {
         "merged": "C:\\Users\\hoang\\Desktop\\TranslateApp\\TranslateApp\\TranslateApp\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_login.xml",
         "source": "C:\\Users\\hoang\\Desktop\\TranslateApp\\TranslateApp\\TranslateApp\\app\\src\\main\\res\\menu\\menu_login.xml"
     }
