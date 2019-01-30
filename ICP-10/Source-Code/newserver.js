@@ -56,7 +56,7 @@ http.createServer(function (req, res) {
             var filestoupload = files.filetoupload;
             var filenumLeft = filestoupload.length;
             //Create a path if not exists
-            var dir = 'C:/Users/hoang/Documents/GitHub/CS5551-Team7-1-ICP/ICP-10/Source Code/tmp/';
+            var dir = 'C:/Users/hoang/Documents/GitHub/CS5551-Team7-1-ICP/ICP-10/Source-Code/tmp/';
 
             if (!fs.existsSync(dir)){
                 fs.mkdirSync(dir);
@@ -66,18 +66,48 @@ http.createServer(function (req, res) {
             {
                 console.log(filestoupload[i].name);
                 var oldpath = filestoupload[i].path;
-                var newpath = 'C:/Users/hoang/Documents/GitHub/CS5551-Team7-1-ICP/ICP-10/Source Code/tmp/' + filestoupload[i].name;
+                var newpath = 'C:/Users/hoang/Documents/GitHub/CS5551-Team7-1-ICP/ICP-10/Source-Code/tmp/' + filestoupload[i].name;
                 fs.rename(oldpath, newpath, function (err) {
                     if (err) throw err;
                     if(--filenumLeft == 0){
-                        res.write('File ' + i + ' uploaded and moved!');
-                        res.write(newpath);
-                        res.end();
+                        //res.writeHead(200, {'Content-Type': 'text/html'});
+                        //res.write('All files have been uploaded!');
+                        //res.write(newpath);
+                        //res.end();
                     }
-
                 });
             }
+            //Call Java Program to process the uploaded files
+            var localtmpURL = 'C:\\Users\\hoang\\Documents\\GitHub\\CS5551-Team7-1-ICP\\ICP-10\\Source-Code\\tmp\\';
+            var exec = require('child_process').exec, child;
+            child = exec('java -jar JavaCallGraphVJ.jar ' + 'junit 5 ' + localtmpURL+'junit-4.3.jar ' + localtmpURL+'junit-4.5.jar ' + localtmpURL+'junit-4.7.jar ' + localtmpURL+'junit-4.9.jar',
+                function (error, stdout, stderr){
+                    console.log('stdout: ' + stdout);
+                    result = stdout;
+                    fs.readFile(localtmpURL + 'Results.html', function (err, data) {
+                        if (err) {
+                            console.log(err);
+                            // HTTP Status: 404 : NOT FOUND
+                            // Content Type: text/plain
+                            res.writeHead(404, {'Content-Type': 'text/html'});
+                        }
+                        else {
+                            //Page found
+                            // HTTP Status: 200 : OK
+                            // Content Type: text/plain
+                            res.writeHead(200, {'Content-Type': 'text/html'});
 
+                            // Write the content of the file to response body
+                            res.write(data.toString());
+                        }
+                        // Send the response body
+                        res.end();
+                    });
+                    console.log('stderr: ' + stderr);
+                    if(error !== null){
+                        console.log('exec error: ' + error);
+                    }
+                });
         });
 
     }
@@ -130,13 +160,30 @@ http.createServer(function (req, res) {
                 var localtmpURL = 'C:\\Users\\hoang\\Documents\\GitHub\\CS5551-Team7-1-ICP\\ICP-10\\Source-Code\\tmp\\';
 
                 var exec = require('child_process').exec, child;
-                child = exec('java -jar JavaCallGraphVJ.jar ' + 'junit 5 ' + localtmpURL+'junit-4.3.jar ' + localtmpURL+'junit-4.5.jar ' + localtmpURL+'junit-4.7.jar ' + localtmpURL+'junit-4.9.jar',
+                child = exec('java -jar ' + localtmpURL + 'JavaCallGraphVJ.jar ' + 'junit 5 ' + localtmpURL+'junit-4.3.jar ' + localtmpURL+'junit-4.5.jar ' + localtmpURL+'junit-4.7.jar ' + localtmpURL+'junit-4.9.jar',
                     function (error, stdout, stderr){
                         console.log('stdout: ' + stdout);
                         result = stdout;
-                        res.write(result);
-                        res.end();
-                        console.log('stderr: ' + stderr);
+                        fs.readFile('Results.html', function (err, data) {
+                            if (err) {
+                                console.log(err);
+                                // HTTP Status: 404 : NOT FOUND
+                                // Content Type: text/plain
+                                res.writeHead(404, {'Content-Type': 'text/html'});
+                            }
+                            else {
+                                //Page found
+                                // HTTP Status: 200 : OK
+                                // Content Type: text/plain
+                                res.writeHead(200, {'Content-Type': 'text/html'});
+
+                                // Write the content of the file to response body
+                                res.write(data.toString());
+                            }
+                            // Send the response body
+                            res.end();
+                        });
+                            console.log('stderr: ' + stderr);
                         if(error !== null){
                             console.log('exec error: ' + error);
                         }
